@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Push Notification
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <code class="center">{{ pushToken }}</code>
+  <button ion-button block [disabled]="clicked" [hidden]="pushToken" (click)="registerPush()">
+    <span [hidden]="clicked">Register Push</span>
+    <span [hidden]="!clicked">Registering...</span>
+  </button>
+
+  <h2 class="big-square" *ngIf="!pushToken">
+    You have no message
+  </h2>
+
+  <h3 class="sub-title" *ngIf="pushToken">
+    Your messages
+  </h3>
+
+  <ion-card *ngFor="let msg of messages">
+    <ion-card-header>
+      {{ msg.title }}
+    </ion-card-header>
+    <ion-card-content>
+      {{ msg.text }}
+    </ion-card-content>
+  </ion-card>
+</ion-content>
